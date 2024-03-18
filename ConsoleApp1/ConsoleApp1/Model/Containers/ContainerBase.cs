@@ -1,3 +1,5 @@
+using ConsoleApp1.Model.Exception;
+
 namespace ConsoleApp1.Model.Containers;
 
 public abstract class ContainerBase
@@ -23,9 +25,16 @@ public abstract class ContainerBase
         MaxWeight = maxWeight;
     }
 
-    protected void Pack(double PackageWeight)
+    protected void Pack(double packageWeight)
     {
-        this.CurrentWeight = this.CurrentWeight + PackageWeight;
+        if (this.CurrentWeight + packageWeight > this.MaxWeight)
+        {
+            this.CurrentWeight = this.CurrentWeight + packageWeight;
+        }
+        else
+        {
+            throw new OverfillException("Ładunek przekroczył dopuszczalny limit");
+        }
     }
 
     protected void Unpack()
