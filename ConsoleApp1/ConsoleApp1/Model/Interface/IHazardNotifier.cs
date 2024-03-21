@@ -2,5 +2,8 @@ namespace ConsoleApp1.Model.Interface;
 
 public interface IHazardNotifier
 {
-    void isDangeorus();
+    static void NotifyDanger(string str)
+    {
+        Console.WriteLine("Niebezpieczna sytuacja z kontenerem " + str);   
+    }
 }
