@@ -47,15 +47,22 @@ public class Ship
         return false;
     }
 
-    public void loadListContainer(List<ContainerBase> list)
+    public List<ContainerBase> loadListContainer(List<ContainerBase> list)
     {
+        List<ContainerBase> res = new List<ContainerBase>();
         foreach(ContainerBase cont in list)
         {
             if (this.loadContainer(cont))
             {
-                list.Remove(cont);
+                
+            }
+            else
+            {
+                res.Add(cont);
             }
         }
+
+        return res;
     }
 
     public ContainerBase unloadContainer()

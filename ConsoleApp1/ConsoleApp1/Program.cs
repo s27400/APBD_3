@@ -180,7 +180,7 @@ class Program
                     List<ContainerBase> temporaryL = new List<ContainerBase>();
                     int choice_2 = -1;
                     
-                        while (choice_2 != -2)
+                        while (true)
                         {
                             Console.WriteLine("Podaj numery kontenerów: (-2 koniec)");
                             int c2 = 0;
@@ -189,11 +189,17 @@ class Program
                                 Console.WriteLine(c2 + ". " + temp);
                                 c2++;
                             }
+
+                            choice_2 = Convert.ToInt32(Console.ReadLine());
+                            if (choice_2 == -2)
+                            {
+                                break;
+                            }
                             temporaryL.Add(KonteneryWPorcie.ElementAt(choice_2));
                             KonteneryWPorcie.RemoveAt(choice_2);
                         }
                         
-                        Kontenerowce.ElementAt(toTake).loadListContainer(temporaryL);
+                        temporaryL = Kontenerowce.ElementAt(toTake).loadListContainer(temporaryL);
 
                         foreach (ContainerBase c in temporaryL)
                         {
